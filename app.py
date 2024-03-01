@@ -14,10 +14,10 @@ def hello():
 
 
 @app.route('/about')
-def about():
+def hello():
     return render_template('about.html')
 
-  @app.route('/about-css')
+@app.route('/about-css')
 def about():
     return render_template('about-css.html')
 
