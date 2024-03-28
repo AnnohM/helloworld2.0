@@ -15,9 +15,10 @@ def hello():
 
 @app.route('/favorite-course')
 def favorite_course():
-    print('favorite course:' + request.args.get('favorite_course_name'))
-    print('favorite_subject:' + request.args.get('favorite_subject_name'))
+    print('favorite course entered:' + request.args.get('favorite_course_name'))
+    print('favorite_subject entered:' + request.args.get('favorite_subject_name'))
     return render_template('favorite-course.html')
+
 
 if __name__ == '__main__':
     app.run()
