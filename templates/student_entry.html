@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block page_title %} {% if action and action == 'create' %} Add New Student {% elif action and action == 'update' %} Update Student {% else %} View Student {% endif %} {% endblock %} {% block page_head %} {% if action and action == 'create' %} Add New Student {% elif action and action == 'update' %} Update Student {% else %} View Student {% endif %} {% endblock %} {% block page_content %}
+First Name {% if action and action in ['create', 'update'] %} 
+{{ student['first_name'] if student else '' }}
+ {% else %}
+{{ student['first_name'] }} {% endif %}
+Last Name {% if action and action in ['create', 'update'] %} 
+{{ student['last_name'] if student else '' }}
+ {% else %}
+{{ student['last_name'] }} {% endif %}
+Birth Date {% if action and action in ['create', 'update'] %} 
+mm/dd/yyyy
+ {% else %}
+{{ student['birth_date'].strftime('%m/%d/%Y') }} {% endif %}
+Major {% if action and action in ['create', 'update'] %} 
+---Select A Major---
+ {% else %}
+{% for each_major in majors %} {{ each_major['major'] if student and each_major['major_id'] == student['major_id'] else ''}} {% endfor %} {% endif %}
+{% if action and action in ['read', 'update'] %}
+Number of Credits Completed {% if action and action == 'update' %} 
+ {% else %}
+{{ student['num_credits_completed'] }} {% endif %}
+GPA {% if action and action in ['create', 'update'] %} 
+ {% else %}
+{{ student['gpa'] }} {% endif %}
+{% endif %}
+{% if action and action in ['create', 'update'] %}
+ {% endif %} Is this an honors student? {% if action and not(action in ['create', 'update']) %}
+{{ 'Yes' if student and student['is_honors'] == True else 'No' }} {% endif %}
+{% if action and action in ['create', 'update'] %} {{ 'Add' if action=='create' else 'Update' }} Student {% endif %} {% if action and action in ['create', 'update'] %} Cancel {% else %} Return {% endif %}
+{% endblock %}

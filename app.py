@@ -47,6 +47,7 @@ def student_create():
         first_name = request.form['first_name']
         last_name = request.form['last_name']
         major_id = request.form['major_id']
+        email = request.form['email']
 
         birth_date = request.form['birth_date']
         is_honors = True if 'is_honors' in request.form else False
